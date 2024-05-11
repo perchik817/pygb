@@ -30,22 +30,40 @@
 # Напишите программу для печати всех уникальных значений в словаре.
 # Input: [{"V": "S001"}, {"V": "S002"}, {"VI": "S001"}, {"VI": "S005"}, {"VII": " S005 "}, {" V ":" S009 "}, {" VIII ":" S007 "}]
 # Output: {'S005', 'S002', 'S007', 'S001', 'S009'}
-def get_unique_values(list_of_dicts):
-    unique_values = set()
-    for d in list_of_dicts:
-        for value in d.values():
-            unique_values.add(value.strip())  # Removing leading and trailing whitespace
-    return unique_values
+# def get_unique_values(list_of_dicts):
+#     unique_values = set()
+#     for d in list_of_dicts:
+#         for value in d.values():
+#             unique_values.add(value.strip())  # Removing leading and trailing whitespace
+#     return unique_values
 
-list_of_dicts = [
-    {"V": "S001"},
-    {"V": "S002"},
-    {"VI": "S001"},
-    {"VI": "S005"},
-    {"VII": " S005 "},
-    {" V ": " S009 "},
-    {" VIII ": " S007 "},
-]
+# list_of_dicts = [
+#     {"V": "S001"},
+#     {"V": "S002"},
+#     {"VI": "S001"},
+#     {"VI": "S005"},
+#     {"VII": " S005 "},
+#     {" V ": " S009 "},
+#     {" VIII ": " S007 "},
+# ]
 
-unique_values = get_unique_values(list_of_dicts)
-print(unique_values)
+# unique_values = get_unique_values(list_of_dicts)
+# print(unique_values)
+
+
+# Дан массив, состоящий из целых чисел. Напишите программу, которая подсчитает количество
+# элементов массива, больших предыдущего (элемента с предыдущим номером)
+# Input: [0, -1, 5, 2, 3]
+# Output: 2 (-1 < 5, 2 < 3)
+def count_next_bigger_num(l):
+    count = 0
+    for i in range(len(l) - 1):
+        if l[i] < l[i + 1]:
+            count += 1
+        else:
+            continue
+    return count
+
+list_ = [0, -1, 5, 2, 3]
+res = count_next_bigger_num(list_)
+print(res)
