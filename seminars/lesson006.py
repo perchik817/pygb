@@ -30,15 +30,42 @@
 # Дан список чисел. Посчитайте, сколько в нем пар элементов, равных друг другу. Считается, что любые два элемента,
 # равные друг другу образуют одну пару, которую необходимо посчитать. Вводится список чисел. Все числа списка находятся
 # на разных строках.
-N = int(input("Enter a number of elements: "))
-numbers = {}
-pairs = 0
-for i in range(N):
-	number = int(input("Enter a number: "))
-	if number in numbers:
-		numbers[number] += 1
-	else:
-		numbers[number] = 1
-for counter in numbers.values():
-	pairs += counter // 2
-print(f"count of pairs: {pairs}")
+# N = int(input("Enter a number of elements: "))
+# numbers = {}
+# pairs = 0
+# for i in range(N):
+# 	number = int(input("Enter a number: "))
+# 	if number in numbers:
+# 		numbers[number] += 1
+# 	else:
+# 		numbers[number] = 1
+# for counter in numbers.values():
+# 	pairs += counter // 2
+# print(f"count of pairs: {pairs}")
+
+
+# Два различных натуральных числа n и m называются дружественными, если сумма делителей числа n (включая 1, но исключая
+# само n) равна числу m и наоборот. Например, 220 и 284 – дружественные числа. По данному числу k выведите все пары
+# дружественных чисел, каждое из которых не превосходит k. Программа получает на вход одно натуральное число k, не
+# превосходящее 10^5. Программа должна вывести все пары дружественных чисел, каждое из которых не превосходит k. Пары
+# необходимо выводить по одной в строке, разделяя пробелами. Каждая пара должна быть выведена только один раз
+# (перестановка чисел новую пару не дает).
+def sum_of_divisors(n):
+    divisor_sum = 1
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            divisor_sum += i
+            if i != n // i:  # Проверяем, что это не квадратный корень
+                divisor_sum += n // i
+    return divisor_sum
+def find_friendly_numbers(k):
+    friendly_pairs = []
+    for n in range(2, k + 1):
+        m = sum_of_divisors(n)
+        if m <= k and n != m and sum_of_divisors(m) == n and (m, n) not in friendly_pairs:
+            friendly_pairs.append((n, m))
+    return friendly_pairs
+k = int(input("Введите число k: "))
+friendly_pairs = find_friendly_numbers(k)
+for pair in friendly_pairs:
+    print(*pair)
