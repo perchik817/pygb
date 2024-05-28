@@ -27,15 +27,30 @@
 # Напоминание: Простое число - это число, которое имеет 2 делителя: 1 и n(само число)
 # Input: 5
 # Output: yes
-def primary_num(num):
-      for i in range(2, num):
-            if num % i == 0:
-                  return False
-      if num == 1:
-            return True
-      return True
-num = int(input("Enter a number: "))
-if primary_num(num):
-      print("yes")
-else:
-      print("no")
+# def primary_num(num):
+#       for i in range(2, num):
+#             if num % i == 0:
+#                   return False
+#       if num == 1:
+#             return True
+#       return True
+# num = int(input("Enter a number: "))
+# if primary_num(num):
+#       print("yes")
+# else:
+#       print("no")
+
+
+# Дано натуральное число N и последовательность из N элементов. Требуется вывести эту последовательность в обратном
+# порядке. Примечание. В программе запрещается объявлять массивы и использовать циклы (даже для ввода и вывода).
+# Input: 2 -> 3 4
+# Output: 4 3
+def reversed_nums(n):
+    if n == 0:
+        return ""
+    num = input()
+    return reversed_nums(n - 1) + num + " "
+N = int(input("Enter a limit of numbers: "))
+result = reversed_nums(N)
+print(result.strip())
+
