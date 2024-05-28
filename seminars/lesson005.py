@@ -15,10 +15,27 @@
 # Напишите программу, которая заменяет оценки Василия, но наоборот: все максимальные – на минимальные.
 # Input: 5 -> 1 3 3 3 4
 # Output: 1 3 3 3 1
-marks_str = "1 3 3 3 4".split()
-marks_list = [int(mark) for mark in marks_str]
-max_mark = max(marks_list)
-min_mark = min(marks_list)
-hacked_marks_list = [min_mark if mark == max_mark else mark for mark in marks_list]
-print(f"hacked marks: {hacked_marks_list}")
+# marks_str = "1 3 3 3 4".split()
+# marks_list = [int(mark) for mark in marks_str]
+# max_mark = max(marks_list)
+# min_mark = min(marks_list)
+# hacked_marks_list = [min_mark if mark == max_mark else mark for mark in marks_list]
+# print(f"hacked marks: {hacked_marks_list}")
 
+
+# Напишите функцию, которая принимает одно число и проверяет, является ли оно простым
+# Напоминание: Простое число - это число, которое имеет 2 делителя: 1 и n(само число)
+# Input: 5
+# Output: yes
+def primary_num(num):
+      for i in range(2, num):
+            if num % i == 0:
+                  return False
+      if num == 1:
+            return True
+      return True
+num = int(input("Enter a number: "))
+if primary_num(num):
+      print("yes")
+else:
+      print("no")
