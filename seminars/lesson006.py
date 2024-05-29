@@ -25,7 +25,14 @@
 # 	if array[i - 1] < array[i] and array[i + 1] < array[i]:
 # 		count += 1
 # print(count)
-
+def recurs(array):
+    count = 0
+    if len(array) <= 2:
+        return 0
+    if array[0] < array[1] and array[2] < array[1]:
+        count += 1
+    return count + recurs(array[1:])
+print(recurs([1, 3, 1, 4, 2, 3, 1]))
 
 # Дан список чисел. Посчитайте, сколько в нем пар элементов, равных друг другу. Считается, что любые два элемента,
 # равные друг другу образуют одну пару, которую необходимо посчитать. Вводится список чисел. Все числа списка находятся
@@ -69,3 +76,4 @@ k = int(input("Введите число k: "))
 friendly_pairs = find_friendly_numbers(k)
 for pair in friendly_pairs:
     print(*pair)
+  
