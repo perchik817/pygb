@@ -2,9 +2,21 @@
 # заданного минимума и не больше заданного максимума). На вход подается список с элементамиlist_1 и границы диапазона
 # в виде чисел min_number, max_number.
 
-list_1 = [-5, 9, 0, 3, -1, -2, 1, 4, -2, 10, 2, 0, -9, 8, 10, -9, 0, -5, -5, 7]
-min_number = 0
-max_number = 10
-for i in range(len(list_1)):
-	if list_1[i] <= max_number and list_1[i] >= min_number:
-		print(i)
+# list_1 = [-5, 9, 0, 3, -1, -2, 1, 4, -2, 10, 2, 0, -9, 8, 10, -9, 0, -5, -5, 7]
+# min_number = 0
+# max_number = 10
+# for i in range(len(list_1)):
+# 	if list_1[i] <= max_number and list_1[i] >= min_number:
+# 		print(i)
+
+
+# Заполните массив элементами арифметической прогрессии. Её первый элемент a1 , разность d и количество элементов n
+# будет задано автоматически. Формула для получения n-го члена прогрессии: an = a1 + (n-1) * d.
+def arithmetic_progression(a1, d, n):
+	l = [a1 + el * d for el in range(n)]
+	return l
+a1 = 2
+d = 3
+n = 4
+result = arithmetic_progression(a1, d, n)
+print(result)
