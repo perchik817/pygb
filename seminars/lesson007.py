@@ -1,3 +1,25 @@
+# Напишите функцию same_by(characteristic, objects), которая проверяет, все ли объекты имеют одинаковое значение
+# некоторой характеристики, и возвращают True, если это так. Если значение характеристики для разных объектов отличается
+# - то False. Для пустого набора объектов, функция должна возвращать True. Аргумент characteristic - это функция,
+# которая принимает объект и вычисляет его характеристику.
+
+def same_by1(characteristic, objects):
+	if not objects:
+		return True
+	return all(characteristic(object) == characteristic(objects[0]) for object in objects)
+def same_by2(characteristic, objects):
+	if not objects:
+		return True
+	return len(set(map(characteristic, objects))) in [0, 1]
+values = [0, 2, 12, 6]
+if same_by1(lambda x: x % 2, values):
+	print("same")
+else:
+	print("different")
+if same_by2(lambda x: x % 2, values):
+	print("same")
+
+
 # Планеты вращаются вокруг звезд по эллиптическим орбитам. Назовем самой далекой планетой ту, орбита которой имеет самую
 # большую площадь. Напишите функцию find_farthest_orbit(list_of_orbits), которая среди списка орбит планет найдет ту, по
 # которой вращается самая далекая планета. Круговые орбиты не учитывайте: вы знаете, что у вашей звезды таких планет
@@ -8,23 +30,23 @@
 # вычислить самую большую площадь эллипса, а затем найти и сам эллипс, имеющий такую площадь. Гарантируется, что самая
 # далекая планета ровно одна
 
-from math import pi
-def find_farthest_orbit1(list_of_orbits):
-	ellipsis = [x for x in list_of_orbits if x[0] != x[1]]
-	areas = [(pi * a * b, (a, b)) for a, b in ellipsis]
-	max_area_orbit = max(areas, key = lambda x: x[0])
-	return max_area_orbit[1]
-def find_farthest_orbit2(list_of_orbits):
-	areas = list(map(lambda x: x[0] * pi * x[1] if x[0] != x[1] else 0, list_of_orbits))
-	max_area = max(areas)
-	index = areas.index(max_area)
-	return list_of_orbits[index]
-def find_farthest_orbit3(list_of_orbits):
-	return max(list_of_orbits, key = lambda x: x[0] * pi * x[1] if x[0] != x[1] else 0)
-orbits = [(1, 3), (2.5, 10), (7, 2), (6, 6), (4, 3)]
-print(*find_farthest_orbit1(orbits))
-print(*find_farthest_orbit2(orbits))
-print(*find_farthest_orbit3(orbits))
+# from math import pi
+# def find_farthest_orbit1(list_of_orbits):
+# 	ellipsis = [x for x in list_of_orbits if x[0] != x[1]]
+# 	areas = [(pi * a * b, (a, b)) for a, b in ellipsis]
+# 	max_area_orbit = max(areas, key = lambda x: x[0])
+# 	return max_area_orbit[1]
+# def find_farthest_orbit2(list_of_orbits):
+# 	areas = list(map(lambda x: x[0] * pi * x[1] if x[0] != x[1] else 0, list_of_orbits))
+# 	max_area = max(areas)
+# 	index = areas.index(max_area)
+# 	return list_of_orbits[index]
+# def find_farthest_orbit3(list_of_orbits):
+# 	return max(list_of_orbits, key = lambda x: x[0] * pi * x[1] if x[0] != x[1] else 0)
+# orbits = [(1, 3), (2.5, 10), (7, 2), (6, 6), (4, 3)]
+# print(*find_farthest_orbit1(orbits))
+# print(*find_farthest_orbit2(orbits))
+# print(*find_farthest_orbit3(orbits))
 
 # У вас есть код, который вы не можете менять (так часто бывает, когда код в глубине программы используется множество
 # раз и вы не хотите ничего сломать):
