@@ -19,9 +19,12 @@ def find_farthest_orbit2(list_of_orbits):
 	max_area = max(areas)
 	index = areas.index(max_area)
 	return list_of_orbits[index]
+def find_farthest_orbit3(list_of_orbits):
+	return max(list_of_orbits, key = lambda x: x[0] * pi * x[1] if x[0] != x[1] else 0)
 orbits = [(1, 3), (2.5, 10), (7, 2), (6, 6), (4, 3)]
 print(*find_farthest_orbit1(orbits))
 print(*find_farthest_orbit2(orbits))
+print(*find_farthest_orbit3(orbits))
 
 # У вас есть код, который вы не можете менять (так часто бывает, когда код в глубине программы используется множество
 # раз и вы не хотите ничего сломать):
